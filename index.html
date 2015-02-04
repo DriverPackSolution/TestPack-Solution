@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="ru">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TestPack Solution</title>
+	<meta name="author" content="Artur Kuzyakov" />
+
+
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://getbootstrap.com/assets/css/docs.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<link href="winjs/css/ui-dark.css" rel="stylesheet" />
+<script src="http://try.buildwinjs.com/lib/winjs/js/base.min.js"></script>
+<script src="http://try.buildwinjs.com/lib/winjs/js/ui.min.js"></script>
+<script src="winjs/js/WinJS.js"></script>
+
+
+
+
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700" />
+	<link rel="stylesheet" type="text/css" href="../jquery.pagepiling.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+
+	<link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+	
+	<script type="text/javascript" src="../jquery.pagepiling.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+	    	$('#pagepiling').pagepiling({
+	    		menu: '#menu',
+	    		anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
+			    sectionsColor: ['#bfda00', '#2ebe21', '#2C3E50', '#51bec4', '#bfda00', '#2ebe21'],
+			    navigation: {
+			    	'position': 'right',
+			   		'tooltips': ['Главная', 'Звук', 'Веб-камера и микрофон', 'Интернет', 'Windows и софт', 'Skype']
+			   	},
+			   	afterRender: function(){
+					//playing the video
+					$('video').get(0).play();
+				}
+			});
+
+
+			$(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+			})
+
+			
+	    });
+    </script>
+
+
+
+
+    <style>
+    	/* Centered texts in each section
+		* --------------------------------------- */
+		.section{
+			text-align:center;
+		}
+
+		#myVideo{
+			position: absolute;
+			z-index: 4;
+			right: 0;
+			bottom: 0;
+			top:0;
+			right:0;
+			width: 100%;
+			height: 100%;
+			background-size: 100% 100%;
+	 		background-color: black; /* in case the video doesn't fit the whole page*/
+	  		background-image: /* our video */;
+	  		background-position: center center;
+	  		background-size: contain;
+	   		object-fit: cover; /*cover video background */
+		}
+
+		/* Layer with position absolute in order to have it over the video
+		* --------------------------------------- */
+		h1 {
+			position: absolute;
+			left: 0;
+			top: 1%;
+			width: 100%;
+			height: 100%;
+			line-height: 75px;
+			z-index: 5;
+			text-align: center;
+		}
+		#section1 .layer{
+			font-size: 14px;
+		}
+		#section1 .layer #down{
+			width:100%;
+			position: absolute;
+			z-index: 5;
+			bottom: 70px;
+			color:white;
+		}
+		#section1 .layer #down a{
+			text-align:center;
+			width:auto;
+			padding-right: 40px;
+			padding-left: 40px;
+			font-size:30px;
+		}
+
+		#section1 h1{
+			color:#fff;
+		}
+
+		#infoMenu li a{
+			color: #fff;
+		}
+
+		#menu li {
+			margin-right: 0px;
+		}
+
+		#menu li a {
+			font-size: 20px;
+		}
+
+		#pp-nav span, .pp-slidesNav span {
+			width: 12px;
+			height: 12px;
+		}
+
+
+    </style>
+</head>
+<body>
+
+
+
+
+	<ul id="menu">
+		<li data-menuanchor="page1" class="active"><a href="#page1" data-toggle="tooltip" data-placement="bottom" title="Главная"><i class="fa fa-home"></i></a></li>
+		<li data-menuanchor="page2"><a href="#page2" data-toggle="tooltip" data-placement="bottom" title="Звук"><i class="fa fa-volume-down"></i></a></li>
+		<li data-menuanchor="page3"><a href="#page3" data-toggle="tooltip" data-placement="bottom" title="Веб-камера и микрофон"><i class="fa fa-video-camera"></i></a></li>
+		<li data-menuanchor="page4"><a href="#page4" data-toggle="tooltip" data-placement="bottom" title="Интернет"><i class="fa fa-wifi"></i></a></li>
+		<li data-menuanchor="page5"><a href="#page5" data-toggle="tooltip" data-placement="bottom" title="Windows и софт"><i class="fa fa-windows"></i></a></li>
+		<li data-menuanchor="page6"><a href="#page6" data-toggle="tooltip" data-placement="bottom" title="Skype"><i class="fa fa-skype"></i></a></li>
+	</ul>
+
+	<div id="pagepiling">
+	    <div class="section" id="section1">
+	    	<video autoplay muted id="myVideo">
+				<source src="imgs/8191872.mp4" type="video/mp4">
+				<source src="imgs/flowers.webm" type="video/webm">
+			</video>
+			<div class="layer">
+				<h1>TestPack<br> Solution</h1>
+				
+				<center>
+					<div id="down">
+						<a href="#page2" class="btn btn-lg btn-outline-inverse"><i class="fa fa-angle-double-down"></i> Начать тестирование</a>
+					</div>
+				</center>
+				<!--<a id="down" href="#page2" data-toggle="tooltip" data-placement="top" title="Начать!"><i class="fa fa-chevron-circle-down fa-4x"></i></a>-->
+			</div>
+	    </div>
+	    <div class="section" id="section2">
+	    	<div class="intro">
+	    		<h1>Звук</h1>
+				<p>Anything is possible with pagePiling.js!</p>
+	    	</div>
+	    </div>
+	    <div class="section" id="section3">
+	    	<div class="intro">
+	    		<h1>Веб-камера и<br> микрофон</h1>
+				<p>Anything is possible with pagePiling.js!</p>
+	    	</div>
+	    </div>
+	    <div class="section" id="section4">
+	    	<div class="intro">
+	    		<h1>Интернет</h1>
+				<p>Don't forget to use afterRender callback for it!</p>
+	    	</div>
+	    </div>
+	    <div class="section" id="section5">
+	    	<div class="intro">
+	    		<h1>Windows и софт</h1>
+				<p>Don't forget to use afterRender callback for it!</p>
+	    	</div>
+	    </div>
+	    <div class="section" id="section6">
+	    	<div class="intro">
+	    		<h1>Skype</h1>
+				<p>Don't forget to use afterRender callback for it!</p>
+	    	</div>
+	    </div>
+	</div>
+
+</body>
+</html>
