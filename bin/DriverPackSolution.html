@@ -105,11 +105,11 @@
         $(document).ready(function () {
             $('#pagepiling').pagepiling({
                 menu: '#menu',
-                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10'],
-                sectionsColor: ['#bfda00', '#2ebe21', '#2C3E50', '#51bec4', '#bfda00', '#2ebe21', '#bfda00', '#2ebe21', '#2C3E50', '#51bec4'],
+                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10', 'page11'],
+                sectionsColor: ['#bfda00', '#2ebe21', '#2C3E50', '#51bec4', '#bfda00', '#2ebe21', '#bfda00', '#2ebe21', '#2C3E50', '#51bec4', '#2ebe21'],
                 navigation: {
                     'position': 'right',
-                    'tooltips': ['Главная', 'Звук', 'Видео', 'Web-камера', 'Интернет', 'Torrent', 'Процессор', 'Монитор', 'Windows и софт', 'Skype']
+                    'tooltips': ['Главная', 'Звук', 'Видео', 'Web-камера', 'Интернет', 'Torrent', 'Процессор', 'Монитор', 'Windows и софт', 'Skype', 'Итоги']
                 }
                 /*afterRender: function () {
                  //playing the video
@@ -154,6 +154,7 @@
         <li class="die" data-menuanchor="page8"><a href="#page8" data-toggle="tooltip" data-placement="bottom" title="Монитор"><i class="fa fa-desktop"></i></a></li>
         <li data-menuanchor="page9"><a href="#page9" data-toggle="tooltip" data-placement="bottom" title="Windows и софт"><i class="fa fa-windows"></i></a></li>
         <li class="die" data-menuanchor="page10"><a href="#page10" data-toggle="tooltip" data-placement="bottom" title="Skype"><i class="fa fa-skype"></i></a></li>
+        <li data-menuanchor="page11"><a href="#page11" data-toggle="tooltip" data-placement="bottom" title="Итог"><i class="fa fa-info-circle"></i></a></li>
     </ul>
 
     <div id="pagepiling">
@@ -189,8 +190,8 @@
                 <ul class="slide_list">
                     <li><input id="melody" name="sound" value="melody" type="checkbox" />
                         <label for="melody">Да, я слышу звук</label></li>
-                    <li><input id="sound" name="sound" value="sound" type="checkbox" />
-                        <label for="sound">Нет, звука не слышно</label></li>
+                    <li><input id="no" name="no" value="no" type="checkbox" />
+                        <label for="no">Нет, звука не слышно</label></li>
                     <li><input id="uaa" name="sound" value="uaa" type="checkbox" />
                         <label for="uaa">UAA Win XP SP2</label></li>
                 </ul>
@@ -260,7 +261,7 @@
         </div>
         <div class="section" id="section6">
             <div class="intro">
-                <h1>Torrent</h1>
+                <h1>Торрент</h1>
                 <center>
                     <div id="file-picker5" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
@@ -271,7 +272,7 @@
                 </center>
                 <ul class="slide_list">
                     <li><input id="torrent" name="torrent" value="torrent" type="checkbox" />
-                        <label for="torrent">Торрент</label></li>
+                        <label for="torrent">Torrent</label></li>
                 </ul>
             </div>
         </div>
@@ -346,6 +347,31 @@
                 <ul class="slide_list">
                     <li><input id="fone" name="fone" value="fone" type="checkbox" />
                         <label for="fone">Микрофон</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section11">
+            <div class="intro">
+                <h1>Итоги тестирования</h1>
+                <center>
+                    <div id="file-picker10" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter10" class="counter">10</div>
+
+                        <div id="progress10" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="sound" name="sound" value="sound" type="checkbox" />
+                        <label for="sound">Звук</label></li>
+                    <li><input id="video" name="video" value="video" type="checkbox"/>
+                        <label for="video">Видео</label></li>
+                    <li><input id="internet" name="internet" value="internet" type="checkbox"/>
+                        <label for="internet">Интернет</label></li>
+                    <li><input id="torrent" name="torrent" value="torrent" type="checkbox" />
+                        <label for="torrent">Торрент</label></li>
+                    <li><input id="soft" name="soft" value="soft" type="checkbox" />
+                        <label for="soft">Софт</label></li>
                 </ul>
             </div>
         </div>

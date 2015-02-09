@@ -52,6 +52,7 @@ function start() {
 function melody() {
     WshShell.Run('tools\\files\\notify.wav', 0, true);
     $('#melody').attr('checked', 'checked');
+    $('#sound').attr('checked', 'checked');
 }
 function yes() {
     setTimeout(function () {
@@ -76,6 +77,7 @@ function codec(json) {
         result.codec = 1;
     }
     $('#codec').attr('checked', 'checked');
+    $('#video').attr('checked', 'checked');
     //WshShell.Run('tools\\files\\video.avi', 0, true);
 }
 function ping() {
@@ -86,6 +88,7 @@ function ping() {
         pingtxt.Close();
         if (ping.indexOf("(0%")) {
             $('#ping').attr('checked', 'checked');
+            $('#internet').attr('checked', 'checked');
             result.ping = 1;
         }
     }, 2 * 1000);
@@ -131,6 +134,7 @@ function torrent() {
         torrenttxt.Close();
         if (torrent.match(/0%/gim).length === 3) {
             $('#torrent').attr('checked', 'checked');
+            $('#torrents').attr('checked', 'checked');
             result.torrent = 1;
         }
     }, 10 * 1000);
@@ -163,6 +167,7 @@ function antivirus() {
                     versionNumber: clearUndefVar(objItem.versionNumber)
                 };
                 $('#antivirus').attr('checked', 'checked');
+                $('#soft').attr('checked', 'checked');
             }
         }
         return true;

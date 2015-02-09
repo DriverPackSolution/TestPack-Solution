@@ -26,13 +26,14 @@ window.onload = function () {
 
                                                                                         setTimeout(
                                                                                                 function () {
-                                                                                                    window.location = "#page9"
+                                                                                                    window.location = "#page9";
                                                                                                     counterStart(
                                                                                                             8,
                                                                                                             function () {
 
                                                                                                                 setTimeout(
                                                                                                                         function () {
+                                                                                                                            window.location = "#page11";
                                                                                                                         },
                                                                                                                         1000
                                                                                                                         );
