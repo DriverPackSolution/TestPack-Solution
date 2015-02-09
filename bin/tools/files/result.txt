@@ -1,0 +1,3 @@
+
+D:\GitHub\ComputerTestingSystem\bin>dir /B /A-D /S "C:\Windows\Minidump\*.dmp"   | find /N /C /V "" 
+1
