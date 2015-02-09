@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="content-language" content="ru">
-        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8; IE=EmulateIE9">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9; IE=EmulateIE11">
         <title>TestPack Solution</title>
         <meta name="author" content="Artur Kuzyakov" />
         <script src="tools/modules/jquery/jquery-1.11.2.min.js"></script>
@@ -106,27 +106,22 @@
             $('#pagepiling').pagepiling({
                 menu: '#menu',
                 anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10', 'page11'],
-                sectionsColor: ['#bfda00', '#2ebe21', '#2C3E50', '#51bec4', '#bfda00', '#2ebe21', '#bfda00', '#2ebe21', '#2C3E50', '#51bec4', '#2ebe21'],
+                sectionsColor: ['#0088d1', '#2ebe21', '#0a57c0', '#51bec4', '#bfda00', '#9f0096', '#bfda00', '#2ebe21', '#db552d', '#51bec4', '#ba1d47'],
                 navigation: {
                     'position': 'right',
                     'tooltips': ['Главная', 'Звук', 'Видео', 'Web-камера', 'Интернет', 'Torrent', 'Процессор', 'Монитор', 'Windows и софт', 'Skype', 'Итоги']
+                },
+                afterRender: function () {
+                    setTimeout(function () {
+                        $('video').get(0).play();
+                    }, 5 * 1000);
                 }
-                /*afterRender: function () {
-                 //playing the video
-                 //$( 'video' ).get( 0 ).play();
-                 var items = document.getElementsByTagName('video');
-                 if (items.length && items[0].canplay) {
-                 items[0].play();
-                 }
-                 }*/
             });
-
-
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
             $('#uaa').closest('li').css({'display': 'none'});
-            $('#video').closest('li').css({'display': 'none'});
+            $('#videocard').closest('li').css({'display': 'none'});
             $('.die').css({'display': 'none'});
             $('.die').closest('a').css({'display': 'none'});
             $('#speed').closest('li').css({'display': 'none'});
@@ -160,17 +155,57 @@
     <div id="pagepiling">
         <div class="section" id="section1">
             <video autoplay muted id="myVideo">
-                <source src="tools/modules/imgs/8191872.mp4" type="video/mp4">
-                <source src="tools/modules/imgs/flowers.webm" type="video/webm">
+                <source src="tools/images/8191872.mp4" type="video/mp4">
             </video>
             <div class="layer">
-                <h1>TestPack<br> Solution</h1>
+                <h1>CheckSystem<br> Solution</h1>
+
+
+                <div id="description" class="center-text">
+                    Вы установили драйверы, а теперь<br>
+                    мы можем помочь их протестировать!
+                </div>
+                <div id="title" class="center-text">
+                    Протестируй компьютер сейчас!
+                </div>
+
+                <script>
+        setTimeout(
+                function () {
+                    $("#description").show();
+                    $("#description").animate({
+                        fontSize: "3em",
+                    }, 500);
+                    setTimeout(
+                            function () {
+                                $("#description").fadeOut();
+                            },
+                            4000
+                            );
+
+                },
+                1200
+                );
+
+        setTimeout(
+                function () {
+
+                    $("#title").show();
+                    $("#title").animate({
+                        fontSize: "3em",
+                    }, 500);
+                },
+                33000
+                );
+
+                </script>
+
 
                 <center>
                     <div id="down">
-                        <a href="#page2" class="btn btn-lg btn-outline-inverse"  onclick="setTimeout(function () {
-                    start();
-                }, 0);"><i class="fa fa-angle-double-down"></i> Начать тестирование</a>
+                        <a href="#page2" class="btn btn-lg btn-outline-inverse" onclick="setTimeout(function () {
+                                    start();
+                                }, 0);"><i class="fa fa-angle-double-down"></i> &nbsp; Протестировать компьютер<br> за 2 минуты</a>
                     </div>
                 </center>
                 <!--<a id="down" href="#page2" data-toggle="tooltip" data-placement="top" title="Начать!"><i class="fa fa-chevron-circle-down fa-4x"></i></a>-->
@@ -178,20 +213,20 @@
         </div>
         <div class="section" id="section2">
             <div class="intro">
-                <h1>Звук</h1>
+                <h2>Звук</h2>
                 <center>
-                    <div id="file-picker1" class="file-picker center-block text-center" style="display:none;">
+                    <div id="file-picker1" class="file-picker center-block text-center" style="display:;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter1" class="counter">10</div>
+                        <div id="counter1" class="counter">5</div>
 
                         <div id="progress1" class="file-picker__progress"></div>
                     </div>
                 </center>
                 <ul class="slide_list">
                     <li><input id="melody" name="sound" value="melody" type="checkbox" />
-                        <label for="melody">Да, я слышу звук</label></li>
-                    <li><input id="no" name="no" value="no" type="checkbox" />
-                        <label for="no">Нет, звука не слышно</label></li>
+                        <label for="melody">Есть звук</label></li>
+                    <li><input id="no" name="no" value="no" type="checkbox" onclick="no();"/>
+                        <label for="no">Нет звука</label></li>
                     <li><input id="uaa" name="sound" value="uaa" type="checkbox" />
                         <label for="uaa">UAA Win XP SP2</label></li>
                 </ul>
@@ -199,11 +234,11 @@
         </div>
         <div class="section" id="section3">
             <div class="intro">
-                <h1>Видео</h1>
+                <h2>Видео</h2>
                 <center>
                     <div id="file-picker2" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter2" class="counter">10</div>
+                        <div id="counter2" class="counter">5</div>
 
                         <div id="progress2" class="file-picker__progress"></div>
                     </div>
@@ -211,8 +246,8 @@
                 <ul class="slide_list">
                     <li><input id="directx" name="directx" value="directx" type="checkbox" />
                         <label for="directx">DirectX</label></li>
-                    <li><input id="video" name="video" value="video" type="checkbox" />
-                        <label for="video">Видеокарта</label></li>
+                    <li><input id="videocard" name="videocard" value="videocard" type="checkbox" />
+                        <label for="videocard">Видеокарта</label></li>
                     <li><input id="codec" name="video" value="codec" type="checkbox"/>
                         <label for="codec">Кодеки</label></li>
                 </ul>
@@ -220,11 +255,11 @@
         </div>
         <div class="section die" id="section4">
             <div class="intro">
-                <h1>Web-камера</h1>
+                <h2>Web-камера</h2>
                 <center>
                     <div id="file-picker3" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter3" class="counter">10</div>
+                        <div id="counter3" class="counter">5</div>
 
                         <div id="progress3" class="file-picker__progress"></div>
                     </div>
@@ -237,12 +272,12 @@
         </div>
         <div class="section" id="section5">
             <div class="intro">
-                <h1>Интернет</h1>
+                <h2>Интернет</h2>
                 <center>
                     <div id="file-picker4" class="file-picker center-block text-center" style="display:none;">
 
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter4" class="counter">10</div>
+                        <div id="counter4" class="counter">5</div>
 
                         <div id="progress4" class="file-picker__progress"></div>
                     </div>
@@ -261,28 +296,28 @@
         </div>
         <div class="section" id="section6">
             <div class="intro">
-                <h1>Торрент</h1>
+                <h2>Торрент</h2>
                 <center>
                     <div id="file-picker5" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter5" class="counter">10</div>
+                        <div id="counter5" class="counter">5</div>
 
                         <div id="progress5" class="file-picker__progress"></div>
                     </div>
                 </center>
                 <ul class="slide_list">
-                    <li><input id="torrent" name="torrent" value="torrent" type="checkbox" />
-                        <label for="torrent">Torrent</label></li>
+                    <li><input id="torrents" name="torrents" value="torrents" type="checkbox" />
+                        <label for="torrents">Torrent</label></li>
                 </ul>
             </div>
         </div>
         <div class="section" id="section7">
             <div class="intro">
-                <h1>Процессор</h1>
+                <h2>Процессор</h2>
                 <center>
                     <div id="file-picker6" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter6" class="counter">10</div>
+                        <div id="counter6" class="counter">5</div>
 
                         <div id="progress6" class="file-picker__progress"></div>
                     </div>
@@ -295,11 +330,11 @@
         </div>
         <div class="section" id="section8">
             <div class="intro">
-                <h1>Монитор</h1>
+                <h2>Монитор</h2>
                 <center>
                     <div id="file-picker7" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter7" class="counter">10</div>
+                        <div id="counter7" class="counter">5</div>
 
                         <div id="progress7" class="file-picker__progress"></div>
                     </div>
@@ -312,11 +347,11 @@
         </div>
         <div class="section" id="section9">
             <div class="intro">
-                <h1>Windows и софт</h1>
+                <h2>Windows и софт</h2>
                 <center>
                     <div id="file-picker8" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter8" class="counter">10</div>
+                        <div id="counter8" class="counter">5</div>
 
                         <div id="progress8" class="file-picker__progress"></div>
                     </div>
@@ -335,11 +370,11 @@
         </div>
         <div class="section" id="section10">
             <div class="intro">
-                <h1>Skype</h1>
+                <h2>Skype</h2>
                 <center>
                     <div id="file-picker9" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter9" class="counter">10</div>
+                        <div id="counter9" class="counter">5</div>
 
                         <div id="progress9" class="file-picker__progress"></div>
                     </div>
@@ -352,11 +387,11 @@
         </div>
         <div class="section" id="section11">
             <div class="intro">
-                <h1>Итоги тестирования</h1>
+                <h2>Итоги</h2>
                 <center>
                     <div id="file-picker10" class="file-picker center-block text-center" style="display:none;">
                         <i class="fa fa-user-plus1 file-picker__icon"></i>
-                        <div id="counter10" class="counter">10</div>
+                        <div id="counter10" class="counter">5</div>
 
                         <div id="progress10" class="file-picker__progress"></div>
                     </div>

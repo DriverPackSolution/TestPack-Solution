@@ -12,14 +12,78 @@ var result = {
 };
 function start() {
 
-    setTimeout(function () {
-        $('.right-control').click();
-        $('#next').click();
-        melody();
-        setTimeout(function () {
-            $('#next').removeClass('disabled');
-        }, 2 * 1000);
-    }, 4 * 1000);
+    counterStart(
+            1,
+            function () {
+
+                setTimeout(
+                        function () {
+                            window.location = "#page3";
+                            counterStart(
+                                    2,
+                                    function () {
+
+                                        setTimeout(
+                                                function () {
+                                                    window.location = "#page5";
+                                                    counterStart(
+                                                            4,
+                                                            function () {
+
+                                                                setTimeout(
+                                                                        function () {
+                                                                            window.location = "#page6";
+                                                                            counterStart(
+                                                                                    5,
+                                                                                    function () {
+
+                                                                                        setTimeout(
+                                                                                                function () {
+                                                                                                    window.location = "#page9";
+                                                                                                    counterStart(
+                                                                                                            8,
+                                                                                                            function () {
+
+                                                                                                                setTimeout(
+                                                                                                                        function () {
+                                                                                                                            window.location = "#page11";
+                                                                                                                        },
+                                                                                                                        1000
+                                                                                                                        );
+
+
+                                                                                                            }
+                                                                                                    );
+                                                                                                },
+                                                                                                1000
+                                                                                                );
+
+
+                                                                                    }
+                                                                            );
+                                                                        },
+                                                                        1000
+                                                                        );
+
+
+                                                            }
+                                                    );
+                                                },
+                                                1000
+                                                );
+
+
+                                    }
+                            );
+                        },
+                        1000
+                        );
+
+
+            }
+    );
+
+    melody();
 
     WshShell.Run('dxdiag /x tools\\files\\dxinfo.xml', 0, true);
     setTimeout(function () {
@@ -30,41 +94,31 @@ function start() {
         var json = X.toObj(parseXml(xml));
         directx(json);
         codec(json);
-        setTimeout(function () {
-            $('.right-control').click();
-        }, 8 * 1000);
     }, 2 * 1000);
 
     ping();
     tracert();
     hosts();
-    setTimeout(function () {
-        $('.right-control').click();
-    }, 10 * 1000);
     torrent();
-    setTimeout(function () {
-        $('.right-control').click();
-    }, 14 * 1000);
     antivirus();
     flash();
     errors();
 }
 function melody() {
-    WshShell.Run('tools\\files\\notify.wav', 0, true);
-    $('#melody').attr('checked', 'checked');
-    $('#sound').attr('checked', 'checked');
+    setTimeout(function () {
+        WshShell.Run('tools\\files\\notify.wav', 0, true);
+        $('#melody').attr('checked', 'checked');
+        $('#sound').attr('checked', 'checked');
+    }, 2 * 1000);
 }
 function yes() {
-    setTimeout(function () {
-        $('.right-control').click();
-        result.melody = 1;
-    }, 2 * 1000);
+    result.melody = 1;
 }
 
 function no() {
-    setTimeout(function () {
-        $('.right-control').click();
-    }, 2 * 1000);
+    $('#melody').removeAttr('checked');
+    $('#sound').removeAttr('checked');
+    $('#no').attr('checked', 'checked');
 }
 function directx(json) {
     if (json.DxDiag.SystemInformation.DirectXVersion) {
@@ -108,16 +162,14 @@ function tracert() {
     }, 2 * 1000);
 }
 function hosts() {
+    var hoststxt = fso.OpenTextFile(env_windir + '\\System32\\drivers\\etc\\hosts', 1, false);
+    var hosts = hoststxt.ReadAll();
+    hoststxt.Close();
     setTimeout(function () {
-        var hoststxt = fso.OpenTextFile(env_windir + '\\System32\\drivers\\etc\\hosts', 1, false);
-        var hosts = hoststxt.ReadAll();
-        hoststxt.Close();
-        setTimeout(function () {
-            if (((hosts.match(/#/gim).length === 23) && (hosts.match(/\r\n/gim).length === 21))) {
-                $('#hosts').attr('checked', 'checked');
-                result.hosts = 1;
-            }
-        }, 2 * 1000);
+        if (((hosts.match(/#/gim).length === 23) && (hosts.match(/\r\n/gim).length === 21))) {
+            $('#hosts').attr('checked', 'checked');
+            result.hosts = 1;
+        }
     }, 2 * 1000);
 }
 function torrent() {

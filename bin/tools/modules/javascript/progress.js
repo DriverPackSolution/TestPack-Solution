@@ -1,76 +1,3 @@
-window.onload = function () {
-    counterStart(
-            1,
-            function () {
-
-                setTimeout(
-                        function () {
-                            window.location = "#page3";
-                            counterStart(
-                                    2,
-                                    function () {
-
-                                        setTimeout(
-                                                function () {
-                                                    window.location = "#page5";
-                                                    counterStart(
-                                                            4,
-                                                            function () {
-
-                                                                setTimeout(
-                                                                        function () {
-                                                                            window.location = "#page6";
-                                                                            counterStart(
-                                                                                    5,
-                                                                                    function () {
-
-                                                                                        setTimeout(
-                                                                                                function () {
-                                                                                                    window.location = "#page9";
-                                                                                                    counterStart(
-                                                                                                            8,
-                                                                                                            function () {
-
-                                                                                                                setTimeout(
-                                                                                                                        function () {
-                                                                                                                            window.location = "#page11";
-                                                                                                                        },
-                                                                                                                        1000
-                                                                                                                        );
-
-
-                                                                                                            }
-                                                                                                    );
-                                                                                                },
-                                                                                                1000
-                                                                                                );
-
-
-                                                                                    }
-                                                                            );
-                                                                        },
-                                                                        1000
-                                                                        );
-
-
-                                                            }
-                                                    );
-                                                },
-                                                1000
-                                                );
-
-
-                                    }
-                            );
-                        },
-                        1000
-                        );
-
-
-            }
-    );
-}
-
 function counterStart(context, callback) {
     var Shape = ProgressBar.Circle;
 
@@ -85,7 +12,7 @@ function counterStart(context, callback) {
     $('#file-picker' + context).fadeIn(2000);
 
 
-    var second = 10;
+    var second = 5;
     rotatingBar.set(-second - 1);
     var counterInterval = setInterval(function () {
 
