@@ -1,0 +1,419 @@
+<!--[if !(IE 6)]><!-->
+<!DOCTYPE html>
+<!--<![endif]-->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="ru">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9; IE=EmulateIE11">
+        <title>TestPack Solution</title>
+        <meta name="author" content="Artur Kuzyakov" />
+        <script src="tools/modules/jquery/jquery-1.11.2.min.js"></script>
+
+        <!-- HTML5 -->
+        <meta http-equiv="MSThemeCompatible" content="yes" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- NO CACHE -->
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="pragma" content="no-cache"  />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="tools/icon.ico" type="image/x-icon" />
+
+        <!-- Redirect if no JS -->
+        <noscript>
+        <meta http-equiv="refresh" content="10;URL='http://drp.su/error/noscript/'">
+        </noscript>
+    <HTA:APPLICATION ID="dpa"
+                     application="yes"
+                     applicationName="DriverPack Solution"
+                     borderStyle="normal"
+                     caption="yes"
+                     contextMenu="yes"
+                     icon="./tools/Icon.ico"
+                     innerBorder="no"
+                     maximizeButton="yes"
+                     minimizeButton="yes"
+                     navigable="yes"
+                     scroll="yes"
+                     scrollFlat="no"
+                     selection="no"
+                     showInTaskBar="yes"
+                     singleInstance="no"
+                     sysMenu="yes"
+                     version="0.1"
+                     windowState="normal" />
+
+    <!--[if lt IE 7]>
+            <![if gte IE 5.5]>
+            <script type="text/javascript" src="tools/modules/javascript/fixpng.js"></script>
+            <style type="text/css">
+            .iePNG, IMG { filter:expression(fixPNG(this)); }
+            .iePNG A { position: relative; }/* style for links with PNG as background */
+            </style>
+            <![endif]>
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="tools/modules/html5shiv/html5shiv.min.js"></script>
+      <script src="tools/modules/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="tools/modules/bootstrap/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="tools/modules/bootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="tools/modules/assets/docs.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="tools/modules/bootstrap/bootstrap.min.js"></script>
+    <!--[if IE 6]>
+        <link href="tools/modules/bootstrap/ie6.css" rel="stylesheet">
+        <style type="text/css">
+                input{ width:auto !important; }
+                .panel-top { width:200px; }
+                .panel {
+                        position:absolute !important;
+                }
+                .modal {
+                        position:absolute;
+                }
+                #language_title {
+                        min-height: 25px;
+                }
+        </style>
+    <![endif]-->
+    <!-- Bootstrap -->
+    <!-- Win JS -->
+    <link href="tools/modules/winjs/ui-dark.css" rel="stylesheet" />
+    <!-- Win JS -->
+    <!-- jquery -->
+    <link rel="stylesheet" type="text/css" href="tools/modules/font/lato.css" />
+    <link rel="stylesheet" type="text/css" href="tools/modules/pagepiling/jquery.pagepiling.css" />
+    <link rel="stylesheet" type="text/css" href="tools/modules/stylesheet/examples.css" />
+    <!-- end jquery -->
+    <link rel="stylesheet" type="text/css" href="tools/modules/font/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="tools/modules/pagepiling/jquery.pagepiling.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#pagepiling').pagepiling({
+                menu: '#menu',
+                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10', 'page11'],
+                sectionsColor: ['#0088d1', '#2ebe21', '#0a57c0', '#51bec4', '#bfda00', '#9f0096', '#bfda00', '#2ebe21', '#db552d', '#51bec4', '#ba1d47'],
+                navigation: {
+                    'position': 'right',
+                    'tooltips': ['Главная', 'Звук', 'Видео', 'Web-камера', 'Интернет', 'Torrent', 'Процессор', 'Монитор', 'Windows и софт', 'Skype', 'Итоги']
+                },
+                afterRender: function () {
+                    setTimeout(function () {
+                        $('video').get(0).play();
+                    }, 5 * 1000);
+                }
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            $('#uaa').closest('li').css({'display': 'none'});
+            $('#videocard').closest('li').css({'display': 'none'});
+            $('.die').css({'display': 'none'});
+            $('.die').closest('a').css({'display': 'none'});
+            $('#speed').closest('li').css({'display': 'none'});
+            $('#sp').closest('li').css({'display': 'none'});
+
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="tools/modules/stylesheet/style.css" />
+    <!-- Progressbar -->
+    <link href='tools/modules/font/roboto.css' rel='stylesheet' type='text/css'>
+    <!-- <script src="tools/modules/javascript/bar.js"></script> -->
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
+    <!-- Progressbar -->
+    <script src="tools/modules/javascript/progress.js"></script>
+</head>
+<body>
+    <ul id="menu">
+        <li data-menuanchor="page1" class="active"><a href="#page1" data-toggle="tooltip" data-placement="bottom" title="Главная"><i class="fa fa-home"></i></a></li>
+        <li data-menuanchor="page2"><a href="#page2" data-toggle="tooltip" data-placement="bottom" title="Звук"><i class="fa fa-volume-down"></i></a></li>
+        <li data-menuanchor="page3"><a href="#page3" data-toggle="tooltip" data-placement="bottom" title="Видео"><i class="fa fa-film"></i></a></li>
+        <li class="die" data-menuanchor="page4"><a href="#page4" data-toggle="tooltip" data-placement="bottom" title="Web-камера"><i class="fa fa-video-camera"></i></a></li>
+        <li data-menuanchor="page5"><a href="#page5" data-toggle="tooltip" data-placement="bottom" title="Интернет"><i class="fa fa-wifi"></i></a></li>
+        <li data-menuanchor="page6"><a href="#page6" data-toggle="tooltip" data-placement="bottom" title="Torrent"><i class="fa fa-link"></i></a></li>
+        <li class="die" data-menuanchor="page7"><a href="#page7" data-toggle="tooltip" data-placement="bottom" title="Процессор"><i class="fa fa-hdd-o"></i></a></li>
+        <li class="die" data-menuanchor="page8"><a href="#page8" data-toggle="tooltip" data-placement="bottom" title="Монитор"><i class="fa fa-desktop"></i></a></li>
+        <li data-menuanchor="page9"><a href="#page9" data-toggle="tooltip" data-placement="bottom" title="Windows и софт"><i class="fa fa-windows"></i></a></li>
+        <li class="die" data-menuanchor="page10"><a href="#page10" data-toggle="tooltip" data-placement="bottom" title="Skype"><i class="fa fa-skype"></i></a></li>
+        <li data-menuanchor="page11"><a href="#page11" data-toggle="tooltip" data-placement="bottom" title="Итог"><i class="fa fa-info-circle"></i></a></li>
+    </ul>
+
+    <div id="pagepiling">
+        <div class="section" id="section1">
+            <video autoplay muted id="myVideo">
+                <source src="tools/images/8191872.mp4" type="video/mp4">
+            </video>
+            <div class="layer">
+                <h1>CheckSystem<br> Solution</h1>
+
+
+                <div id="description" class="center-text">
+                    Вы установили драйверы, а теперь<br>
+                    мы можем помочь их протестировать!
+                </div>
+                <div id="title" class="center-text">
+                    Протестируй компьютер сейчас!
+                </div>
+
+                <script>
+        setTimeout(
+                function () {
+                    $("#description").show();
+                    $("#description").animate({
+                        fontSize: "3em",
+                    }, 500);
+                    setTimeout(
+                            function () {
+                                $("#description").fadeOut();
+                            },
+                            4000
+                            );
+
+                },
+                1200
+                );
+
+        setTimeout(
+                function () {
+
+                    $("#title").show();
+                    $("#title").animate({
+                        fontSize: "3em",
+                    }, 500);
+                },
+                33000
+                );
+
+                </script>
+
+
+                <center>
+                    <div id="down">
+                        <a href="#page2" class="btn btn-lg btn-outline-inverse" onclick="setTimeout(function () {
+                                    start();
+                                }, 0);"><i class="fa fa-angle-double-down"></i> &nbsp; Протестировать компьютер<br> за 2 минуты</a>
+                    </div>
+                </center>
+                <!--<a id="down" href="#page2" data-toggle="tooltip" data-placement="top" title="Начать!"><i class="fa fa-chevron-circle-down fa-4x"></i></a>-->
+            </div>
+        </div>
+        <div class="section" id="section2">
+            <div class="intro">
+                <h2>Звук</h2>
+                <center>
+                    <div id="file-picker1" class="file-picker center-block text-center" style="display:;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter1" class="counter">5</div>
+
+                        <div id="progress1" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="melody" name="sound" value="melody" type="checkbox" />
+                        <label for="melody">Есть звук</label></li>
+                    <li><input id="no" name="no" value="no" type="checkbox" onclick="no();"/>
+                        <label for="no">Нет звука</label></li>
+                    <li><input id="uaa" name="sound" value="uaa" type="checkbox" />
+                        <label for="uaa">UAA Win XP SP2</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="intro">
+                <h2>Видео</h2>
+                <center>
+                    <div id="file-picker2" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter2" class="counter">5</div>
+
+                        <div id="progress2" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="directx" name="directx" value="directx" type="checkbox" />
+                        <label for="directx">DirectX</label></li>
+                    <li><input id="videocard" name="videocard" value="videocard" type="checkbox" />
+                        <label for="videocard">Видеокарта</label></li>
+                    <li><input id="codec" name="video" value="codec" type="checkbox"/>
+                        <label for="codec">Кодеки</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section die" id="section4">
+            <div class="intro">
+                <h2>Web-камера</h2>
+                <center>
+                    <div id="file-picker3" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter3" class="counter">5</div>
+
+                        <div id="progress3" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="webcam" name="webcam" value="webcam" type="checkbox" />
+                        <label for="webcam">Камера</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section5">
+            <div class="intro">
+                <h2>Интернет</h2>
+                <center>
+                    <div id="file-picker4" class="file-picker center-block text-center" style="display:none;">
+
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter4" class="counter">5</div>
+
+                        <div id="progress4" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="ping" name="internet" value="ping" type="checkbox" />
+                        <label for="ping">Ping</label></li>
+                    <li><input id="speed" name="internet" value="speed" type="checkbox" />
+                        <label for="speed">Speed test</label></li>
+                    <li><input id="tracert" name="internet" value="tracert" type="checkbox" />
+                        <label for="tracert">Tracert</label></li>
+                    <li><input id="hosts" name="hosts" value="hosts" type="checkbox" />
+                        <label for="hosts">Нost</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section6">
+            <div class="intro">
+                <h2>Торрент</h2>
+                <center>
+                    <div id="file-picker5" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter5" class="counter">5</div>
+
+                        <div id="progress5" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="torrents" name="torrents" value="torrents" type="checkbox" />
+                        <label for="torrents">Torrent</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section7">
+            <div class="intro">
+                <h2>Процессор</h2>
+                <center>
+                    <div id="file-picker6" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter6" class="counter">5</div>
+
+                        <div id="progress6" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="load" name="proc" value="load" type="checkbox" />
+                        <label for="load">Процессор</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section8">
+            <div class="intro">
+                <h2>Монитор</h2>
+                <center>
+                    <div id="file-picker7" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter7" class="counter">5</div>
+
+                        <div id="progress7" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="test" name="display" value="test" type="checkbox" />
+                        <label for="test">Монитор</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section9">
+            <div class="intro">
+                <h2>Windows и софт</h2>
+                <center>
+                    <div id="file-picker8" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter8" class="counter">5</div>
+
+                        <div id="progress8" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="antivirus" name="soft" value="antivirus" type="checkbox" />
+                        <label for="antivirus">Антивирус</label></li>
+                    <li><input id="sp" name="soft" value="sp" type="checkbox" />
+                        <label for="sp">Service Pack</label></li>
+                    <li><input id="flash" name="soft" value="flash" type="checkbox" />
+                        <label for="flash">Flash-плеер</label></li>
+                    <li><input id="errors" name="soft" value="errors" type="checkbox" />
+                        <label for="errors">Ошибки Windows</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section10">
+            <div class="intro">
+                <h2>Skype</h2>
+                <center>
+                    <div id="file-picker9" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter9" class="counter">5</div>
+
+                        <div id="progress9" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="fone" name="fone" value="fone" type="checkbox" />
+                        <label for="fone">Микрофон</label></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section" id="section11">
+            <div class="intro">
+                <h2>Итоги</h2>
+                <center>
+                    <div id="file-picker10" class="file-picker center-block text-center" style="display:none;">
+                        <i class="fa fa-user-plus1 file-picker__icon"></i>
+                        <div id="counter10" class="counter">5</div>
+
+                        <div id="progress10" class="file-picker__progress"></div>
+                    </div>
+                </center>
+                <ul class="slide_list">
+                    <li><input id="sound" name="sound" value="sound" type="checkbox" />
+                        <label for="sound">Звук</label></li>
+                    <li><input id="video" name="video" value="video" type="checkbox"/>
+                        <label for="video">Видео</label></li>
+                    <li><input id="internet" name="internet" value="internet" type="checkbox"/>
+                        <label for="internet">Интернет</label></li>
+                    <li><input id="torrent" name="torrent" value="torrent" type="checkbox" />
+                        <label for="torrent">Торрент</label></li>
+                    <li><input id="soft" name="soft" value="soft" type="checkbox" />
+                        <label for="soft">Софт</label></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="tools/modules/javascript/variables.js"></script>
+    <script type="text/javascript" src="tools/modules/xml2json/xml2json.js"></script>
+    <script type="text/javascript" src="tools/modules/javascript/testdrive.js"></script>
+</body>
+</html>

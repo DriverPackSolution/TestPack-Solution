@@ -1,0 +1,1 @@
+dir /B /A-D /S "C:\Windows\Minidump\*.dmp" | find /N /C /V ""

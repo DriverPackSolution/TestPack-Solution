@@ -1,0 +1,79 @@
+<html>
+<head>
+<title> XML/JSON - Tests </title>
+<script type="text/javascript" src="xml2json.js"></script>
+<script type="text/javascript" src="json2xml.js"></script>
+<script type="text/javascript">
+
+
+function parseXml(xml) {
+   var dom = null;
+   if (window.DOMParser) {
+      try { 
+         dom = (new DOMParser()).parseFromString(xml, "text/xml"); 
+      } 
+      catch (e) { dom = null; }
+   }
+   else if (window.ActiveXObject) {
+      try {
+         dom = new ActiveXObject('Microsoft.XMLDOM');
+         dom.async = false;
+         if (!dom.loadXML(xml)) // parse error ..
+            window.alert(dom.parseError.reason + dom.parseError.srcText);
+      } 
+      catch (e) { dom = null; }
+   }
+   else
+      alert("oops");
+   return dom;
+}
+
+
+
+var convertXml = function() {
+   document.getElementById('json').value = "If you can still see this text, then something didn't work...";
+   var xml = document.getElementById('xml').value;
+   var json = xml2json( parseXml(xml), "  ");
+   showJson(json);
+}
+
+var convertJson = function() {
+   document.getElementById('xml').value = "If you can still see this text, then something didn't work...";
+   var json = document.getElementById('json').value;
+   var xml = json2xml( json, "  ");
+   showXml(xml);
+}
+
+
+
+window.onload = function() { convertXml(); }
+
+function showJson(s) { document.getElementById("json").value = s.replace(/&/g, "&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function showXml(s)  { document.getElementById("xml").value  = s; s.replace(/&/g, "&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+</script>
+</head>
+
+<body>
+<table border="0">
+<tr>
+  <td>
+    <p>XML</p>
+    <textarea rows="30" cols="80" id="xml"><e>Hello World</e></textarea>
+  </td>
+  <td>
+    <input type="submit" value="->" onclick="convertXml();" />
+    <br />
+    <input type="submit" value="<-" onclick="convertJson();" />
+  </td>
+  <td>
+    <p>JSON</p>
+    <textarea rows="30" cols="80" id="json">...</textarea>
+  </td>  
+</table>
+
+<br />
+
+<br />
+</body>
+</html>
